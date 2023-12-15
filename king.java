@@ -1,0 +1,3 @@
+class king extends piece{
+    
+}
