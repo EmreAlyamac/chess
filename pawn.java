@@ -10,7 +10,8 @@ public class pawn extends piece {
         this.color = color;
     }
 
-    public Boolean validMove(int x, int y, piece[][] board) {
+    // x vertical, y horizontal
+    public Boolean validMove(int y, int x, piece[][] board) {
         if (x == this.x && y == this.y) {
             return false;
         }
@@ -47,12 +48,12 @@ public class pawn extends piece {
     public String toString() {
         String result = "P ";
         if (this.color == 0) {
-            result += "W";
+            result += "W ";
         } else if (this.color == 1) {
-            result += "B";
+            result += "B ";
         }
 
-        result += "x:" + this.x + "y:" + this.y;
+        result += " x: " + this.x + " y: " + this.y;
         return result;
     }
 

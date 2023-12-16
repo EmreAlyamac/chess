@@ -41,12 +41,12 @@ class king extends piece{
     public String toString(){
         String result = "K ";
         if (this.color == 0) {
-            result += "W";
+            result += "W ";
         } else if (this.color == 1) {
-            result += "B";
+            result += "B ";
         }
 
-        result += "x:" + this.x + "y:" + this.y;
+        result += " x: " + this.x + " y: " + this.y;
         return result;
     }
 

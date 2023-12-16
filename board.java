@@ -3,7 +3,7 @@
  */
 public class board {
 
-    piece[][] board = new piece[8][8];
+    private piece[][] board = new piece[8][8];
 
     public board() {
         // initialize board
@@ -51,6 +51,15 @@ public class board {
         }
         result += "---------------------------------\n";
         return result;
+    }
+
+    public Boolean move(int x1, int y1, int x2, int y2) {
+        if (board[x1][y1].validMove(x2, y2, board)) {
+            board[x2][y2] = board[x1][y1];
+            board[x1][y1] = new empty(x1, y1);
+            return true;
+        }
+        return false;
     }
 
 
