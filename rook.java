@@ -10,7 +10,7 @@ public class rook extends piece {
         this.color = color;
     }
 
-    public boolean validMove(int x, int y, piece[][] board) {
+    public Boolean validMove(int x, int y, piece[][] board) {
         if (x == this.x) {
             if (y > this.y) {
                 for (int i = this.y + 1; i < y; i++) {
@@ -48,7 +48,7 @@ public class rook extends piece {
     }
 
     public String toString(){
-        String result = "";
+        String result = "R ";
         if (this.color == 0) {
             result += "W";
         } else if (this.color == 1) {

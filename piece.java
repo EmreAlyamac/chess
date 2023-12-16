@@ -41,9 +41,9 @@ public abstract class piece {
 
     //public abstract boolean validmoves(int x, int y, piece[][] board); // may not implement
 
-    public abstract boolean validMove(int x, int y, piece[][] board);
+    public abstract Boolean validMove(int x, int y, piece[][] board);
 
-    //public abstract String toString();
+    public abstract String toString();
 
 
 

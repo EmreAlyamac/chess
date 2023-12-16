@@ -5,7 +5,7 @@ class empty extends piece{
         this.alive = true;
         this.color = -1;
     }
-    public boolean validMove(int x, int y, piece[][] board) {
+    public Boolean validMove(int x, int y, piece[][] board) {
         return false;
     }
     public boolean validmoves(int x, int y, piece[][] board) {
