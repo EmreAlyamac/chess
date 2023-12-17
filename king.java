@@ -41,7 +41,6 @@ class king extends piece{
         if (x == this.x - 1 && y == this.y - 1){
             move = true;
         }
-        move = false;
 
         if (eat && move){
             eat(x,y,board);

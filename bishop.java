@@ -66,7 +66,6 @@ public class bishop extends piece{
             }
             move = true;
         }
-        move = false;
         if(eat && move){
             eat(x,y,board);
         }

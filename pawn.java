@@ -11,7 +11,7 @@ public class pawn extends piece {
     }
 
     // x vertical, y horizontal
-    public Boolean validMove(int y, int x, piece[][] board) {
+    public Boolean validMove(int x, int y, piece[][] board) {
         
         Boolean eat = false;
         if (board[x][y].getAlive() && board[x][y].getColor() != this.color) {
@@ -23,35 +23,38 @@ public class pawn extends piece {
             move = false;
         }
         if (this.color == 0) {
-            if (x == this.x && y == this.y + 1) {
+            if (y == this.y && x == this.x + 1) {
                 move = true;
             }
-            if (x == this.x && y == this.y + 2 && this.y == 1) {
+            if (y == this.y && x == this.x + 2 && this.x == 1) {
                 move = true;
             }
-            if (x == this.x + 1 && y == this.y + 1 && board[x][y].getColor() == 1) {
+            if (y == this.y + 1 && x == this.x + 1 && board[x][y].getColor() == 1) {
                 move = true;
             }
-            if (x == this.x - 1 && y == this.y + 1 && board[x][y].getColor() == 1) {
+            if (y == this.y - 1 && x == this.x + 1 && board[x][y].getColor() == 1) {
                 move = true;
             }
         } else if (this.color == 1) {
-            if (x == this.x && y == this.y - 1) {
+            if (y == this.y && x == this.x - 1) {
                 move = true;
             }
-            if (x == this.x && y == this.y - 2 && this.y == 6) {
+            if (y == this.y && x == this.x - 2 && this.x == 6) {
                 move = true;
             }
-            if (x == this.x + 1 && y == this.y - 1 && board[x][y].getColor() == 0) {
+            if (y == this.y + 1 && x == this.x - 1 && board[x][y].getColor() == 0) {
                 move = true;
             }
-            if (x == this.x - 1 && y == this.y - 1 && board[x][y].getColor() == 0) {
+            if (y == this.y - 1 && x == this.x - 1 && board[x][y].getColor() == 0) {
                 move = true;
             }
         }
-        move = false;
         if (eat && move) {
             eat(x, y, board);
+        }
+        if (move){
+            this.x = x;
+            this.y = y;
         }
         return move;
     }

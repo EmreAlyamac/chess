@@ -45,7 +45,6 @@ public class knight extends piece {
         if (x == this.x - 2 && y == this.y - 1){
             move = true;
         }
-        move = false;
 
         if (eat && move){
             eat(x,y,board);
@@ -61,7 +60,7 @@ public class knight extends piece {
             result += "B ";
         }
 
-        result += " x: " + this.x + " move =y: " + this.y;
+        result += " x: " + this.x + " y: " + this.y;
         return result;
     }
     
