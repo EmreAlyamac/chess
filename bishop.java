@@ -10,43 +10,68 @@ public class bishop extends piece{
         this.color = color;
     }
 
+    // if it can reach return true
+    // if there is a piece there it can call the eat method 
+
+    // eating is the same as moving but it will kill the piece
+
+
+
+
     public Boolean validMove(int x, int y, piece[][] board) {
-        if (x == this.x && y == this.y) {
-            return false;
+        Boolean move = false;
+        Boolean eat = false;
+        // check if the target position has a piece of the different color
+        if (board[x][y].getAlive() && board[x][y].getColor() != this.color) {
+            eat = true;
         }
+        
+        if (x == this.x && y == this.y) {
+            move = false;
+        }
+
         if (x > this.x && y > this.y) {
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y + i].getAlive()) {
-                    return false;
+                    move = false;
+                    break;
                 }
             }
-            return true;
+            move = true;
         }
         if (x > this.x && y < this.y) {
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y - i].getAlive()) {
-                    return false;
+                    move = false;
+                    break;
                 }
             }
-            return true;
+            move = true;
         }
         if (x < this.x && y > this.y) {
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y + i].getAlive()) {
-                    return false;
+                    move = false;
+                    break;
                 }
             }
-            return true;
+            move = true;
         }
         if (x < this.x && y < this.y) {
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y - i].getAlive()) {
-                    return false;
+                    move = false;
+                    break;
                 }
             }
-            return true;
+            move = true;
         }
-        return false;
+        move = false;
+        if(eat && move){
+            eat(x,y,board);
+        }
+        return move;
+
     }
 
     public String toString(){

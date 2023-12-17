@@ -11,40 +11,52 @@ public class rook extends piece {
     }
 
     public Boolean validMove(int x, int y, piece[][] board) {
+        
+        Boolean eat = false;
+        if (board[x][y].getAlive() && board[x][y].getColor() != this.color) {
+            eat = true;
+        }
+        Boolean move = false;
+        
         if (x == this.x) {
             if (y > this.y) {
                 for (int i = this.y + 1; i < y; i++) {
                     if (board[x][i].getAlive()) {
-                        return false;
+                        move = false;
                     }
                 }
                 return true;
             } else if (y < this.y) {
                 for (int i = this.y - 1; i > y; i--) {
                     if (board[x][i].getAlive()) {
-                        return false;
+                        move = false;
                     }
                 }
-                return true;
+                move = true;
             }
         } else if (y == this.y) {
             if (x > this.x) {
                 for (int i = this.x + 1; i < x; i++) {
                     if (board[i][y].getAlive()) {
-                        return false;
+                        move = false;
                     }
                 }
                 return true;
             } else if (x < this.x) {
                 for (int i = this.x - 1; i > x; i--) {
                     if (board[i][y].getAlive()) {
-                        return false;
+                        move = false;
                     }
                 }
-                return true;
+                move = true;
             }
         }
-        return false;
+        move = false;
+
+        if(eat && move){
+            eat(x,y,board);
+        }
+        return move;
     }
 
     public String toString(){

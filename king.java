@@ -8,34 +8,45 @@ class king extends piece{
     }
 
     public Boolean validMove(int x, int y, piece[][] board){
+        Boolean eat = false;
+        if (board[x][y].getAlive() && board[x][y].getColor() != this.color){
+            eat = true;
+        }
+        Boolean move = false;
+
         if (x == this.x && y == this.y){
-            return false;
+            move = false;
         }
         if (x == this.x + 1 && y == this.y){
-            return true;
+            move = true;
         }
         if (x == this.x - 1 && y == this.y){
-            return true;
+            move = true;
         }
         if (x == this.x && y == this.y + 1){
-            return true;
+            move = true;
         }
         if (x == this.x && y == this.y - 1){
-            return true;
+            move = true;
         }
         if (x == this.x + 1 && y == this.y + 1){
-            return true;
+            move = true;
         }
         if (x == this.x + 1 && y == this.y - 1){
-            return true;
+            move = true;
         }
         if (x == this.x - 1 && y == this.y + 1){
-            return true;
+            move = true;
         }
         if (x == this.x - 1 && y == this.y - 1){
-            return true;
+            move = true;
         }
-        return false;
+        move = false;
+
+        if (eat && move){
+            eat(x,y,board);
+        }
+        return move;
     }
 
     public String toString(){

@@ -53,6 +53,10 @@ public class board {
         return result;
     }
 
+    // it will move to the new location if it is a valid move
+    // and it will eat the piece if it is a valid move if the target position has a piece of the different color
+    
+
     public Boolean move(int x1, int y1, int x2, int y2) {
         if (board[x1][y1].validMove(x2, y2, board)) {
             board[x2][y2] = board[x1][y1];

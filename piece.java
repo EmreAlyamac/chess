@@ -7,6 +7,7 @@ public abstract class piece {
     int x;
     int y;
     boolean alive;
+    player owner;
 
 
     public void move(int x, int y) {
@@ -37,6 +38,10 @@ public abstract class piece {
 
     public boolean getAlive() {
         return this.alive;
+    }
+
+    public void eat(int x, int y, piece[][] board){
+        board[x][y].kill();
     }
 
     //public abstract boolean validmoves(int x, int y, piece[][] board); // may not implement
