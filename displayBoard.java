@@ -23,7 +23,7 @@ public class displayBoard extends JFrame {
                 panel.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(MouseEvent e) {
-                        System.out.println("Panel " + finalI + " " + finalJ + " clicked");
+                       game.clicked(finalI, finalJ);
                     }
                 });
                 add(panel);
@@ -34,6 +34,35 @@ public class displayBoard extends JFrame {
         setVisible(true);
     }
 
-        // new displayBoard();
+    public Boolean update(board board) {
+        getContentPane().removeAll(); // Remove all components
+        setLayout(new GridLayout(8, 8)); // Set layout again
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                final int finalI = i;
+                final int finalJ = j;
+                JPanel panel = new JPanel(new GridBagLayout());
+                if ((i + j) % 2 == 0) {
+                    panel.setBackground(new Color(87, 36, 3));
+                } else {
+                    panel.setBackground(new Color(255, 139, 64));
+                }
+                JLabel label = new JLabel();
+                ImageIcon icon = new ImageIcon(board.getPiece(i, j).getPath());
+                label.setIcon(icon);
+                panel.add(label);
+                panel.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                            game.clicked(finalI, finalJ);
+                    }
+                });
+                add(panel);
+            }
+        }
+        revalidate(); // Revalidate the JFrame
+        repaint(); // Repaint the JFrame
+        return true;
+    }
     
 }
