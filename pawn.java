@@ -8,6 +8,7 @@ public class pawn extends piece {
         this.y = y;
         this.alive = true;
         this.color = color;
+        type = "pawn";
     }
 
     // x vertical, y horizontal

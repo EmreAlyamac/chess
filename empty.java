@@ -2,8 +2,9 @@ class empty extends piece{
     public empty(int x, int y) {
         this.x = x;
         this.y = y;
-        this.alive = true;
+        this.alive = false;
         this.color = -1;
+        this.type = "empty";
     }
     public Boolean validMove(int x, int y, piece[][] board) {
         return false;

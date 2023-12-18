@@ -8,7 +8,12 @@ public abstract class piece {
     int y;
     boolean alive;
     player owner;
+    String type;
 
+
+    public String getType() {
+        return this.type;
+    }
 
     public void move(int x, int y) {
         this.x = x;
@@ -41,7 +46,18 @@ public abstract class piece {
     }
 
     public void eat(int x, int y, piece[][] board){
+        if (board[x][y].getAlive() == false) {
+            return;
+        }
         board[x][y].kill();
+        String color = "";
+        if (board[x][y].getColor() == 0) {
+            color = "White";
+        } else {
+            color = "Black";
+        }
+         
+        System.out.println(color + " " + board[x][y].getType()+ " at " + x + ", " + y + " has been eaten by " + this.toString());
     }
 
     //public abstract boolean validmoves(int x, int y, piece[][] board); // may not implement
