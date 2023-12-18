@@ -9,6 +9,11 @@ public class pawn extends piece {
         this.alive = true;
         this.color = color;
         type = "pawn";
+        if (color == 0) {
+            this.path = "whitePawn.png";
+        } else {
+            this.path = "blackPawn.png";
+        }
     }
 
     // x vertical, y horizontal

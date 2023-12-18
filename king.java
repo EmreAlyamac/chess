@@ -5,6 +5,13 @@ class king extends piece{
         this.y = y;
         this.alive = true;
         this.color = color;
+        this.type = "king";
+        this.path = "";
+        if (color == 0){
+            this.path = "whiteKing.png";
+        } else {
+            this.path = "blackKing.png";
+        }
     }
 
     public Boolean validMove(int x, int y, piece[][] board){

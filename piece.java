@@ -2,6 +2,7 @@
  * piece
  */
 public abstract class piece {
+    String[] piece_paths = {"blackBishop.png", "blackKing.png", "blackKnight.png", "blackPawn.png", "blackQueen.png", "blackRook.png", "whiteBishop.png", "whiteKing.png", "whiteKnight.png", "whitePawn.png", "whiteQueen.png", "whiteRook.png"};
 
     int color; // 0 = white, 1 = black
     int x;
@@ -9,7 +10,12 @@ public abstract class piece {
     boolean alive;
     player owner;
     String type;
+    String path;
 
+
+    public String getPath() {
+        return this.path;
+    }
 
     public String getType() {
         return this.type;

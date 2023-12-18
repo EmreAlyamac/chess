@@ -5,6 +5,7 @@ class empty extends piece{
         this.alive = false;
         this.color = -1;
         this.type = "empty";
+        this.path = "";
     }
     public Boolean validMove(int x, int y, piece[][] board) {
         return false;

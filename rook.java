@@ -8,6 +8,13 @@ public class rook extends piece {
         this.y = y;
         this.alive = true;
         this.color = color;
+        this.type = "rook";
+        this.path = "";
+        if (color == 0){
+            this.path = "whiteRook.png";
+        } else {
+            this.path = "blackRook.png";
+        }
     }
 
     public Boolean validMove(int x, int y, piece[][] board) {

@@ -8,6 +8,13 @@ public class bishop extends piece{
         this.y = y;
         this.alive = true;
         this.color = color;
+        this.type = "bishop";
+        if (color == 0) { // white
+            this.path = "whiteBishop.png";
+        } else { // black
+            this.path = "blackBishop.png";
+        }
+
     }
 
     // if it can reach return true

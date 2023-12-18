@@ -8,6 +8,13 @@ public class queen extends piece {
         this.y = y;
         this.alive = true;
         this.color = color;
+        this.type = "queen";
+        this.path = "";
+        if (color == 0){
+            this.path = "whiteQueen.png";
+        } else {
+            this.path = "blackQueen.png";
+        }
     }
 
     public Boolean validMove(int x, int y, piece[][] board) {
