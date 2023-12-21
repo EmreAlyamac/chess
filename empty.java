@@ -13,6 +13,11 @@ class empty extends piece{
     public boolean validmoves(int x, int y, piece[][] board) {
         return false;
     }
+
+    public Boolean check_valid(int x, int y, piece[][] board) {
+        return false;
+    }
+    
     public String toString() {
         return " ";
     }

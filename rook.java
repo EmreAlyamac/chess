@@ -17,6 +17,41 @@ public class rook extends piece {
         }
     }
 
+    public Boolean check_valid(int x, int y, piece[][] board){
+        Boolean move = false;
+
+        
+        if (x == this.x && y == this.y){
+            move = false;
+        }
+
+        if (x == this.x + 1 && y == this.y){
+            move = true;
+        }
+        if (x == this.x - 1 && y == this.y){
+            move = true;
+        }
+        if (x == this.x && y == this.y + 1){
+            move = true;
+        }
+        if (x == this.x && y == this.y - 1){
+            move = true;
+        }
+        if (x == this.x + 1 && y == this.y + 1){
+            move = true;
+        }
+        if (x == this.x + 1 && y == this.y - 1){
+            move = true;
+        }
+        if (x == this.x - 1 && y == this.y + 1){
+            move = true;
+        }
+        if (x == this.x - 1 && y == this.y - 1){
+            move = true;
+        }
+        return move;
+    }
+
     public Boolean validMove(int x, int y, piece[][] board) {
         
         Boolean eat = false;

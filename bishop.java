@@ -80,6 +80,51 @@ public class bishop extends piece{
 
     }
 
+    public Boolean check_valid(int x, int y, piece[][] board) {
+        Boolean move = false;
+        if (x == this.x && y == this.y) {
+            move = false;
+        }
+
+        if (x > this.x && y > this.y) {
+            for (int i = 1; i < x - this.x; i++) {
+                if (board[this.x + i][this.y + i].getAlive()) {
+                    move = false;
+                    break;
+                }
+            }
+            move = true;
+        }
+        if (x > this.x && y < this.y) {
+            for (int i = 1; i < x - this.x; i++) {
+                if (board[this.x + i][this.y - i].getAlive()) {
+                    move = false;
+                    break;
+                }
+            }
+            move = true;
+        }
+        if (x < this.x && y > this.y) {
+            for (int i = 1; i < this.x - x; i++) {
+                if (board[this.x - i][this.y + i].getAlive()) {
+                    move = false;
+                    break;
+                }
+            }
+            move = true;
+        }
+        if (x < this.x && y < this.y) {
+            for (int i = 1; i < this.x - x; i++) {
+                if (board[this.x - i][this.y - i].getAlive()) {
+                    move = false;
+                    break;
+                }
+            }
+            move = true;
+        }
+        return move;
+    }
+    
     public String toString(){
         String result = "B ";
         if (this.color == 0) {
