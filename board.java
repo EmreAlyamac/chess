@@ -67,6 +67,8 @@ public class board {
         if (board[x1][y1].validMove(x2, y2, board)) {
             board[x2][y2] = board[x1][y1];
             board[x1][y1] = new empty(x1, y1);
+            displayBoard.updatePanel(x1, y1, this);
+            displayBoard.updatePanel(x2, y2, this);
             return true;
         }
         return false;
