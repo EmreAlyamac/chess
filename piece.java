@@ -70,6 +70,8 @@ public abstract class piece {
 
     public abstract Boolean validMove(int x, int y, piece[][] board);
 
+    public abstract Boolean check_valid(int x, int y, piece[][] board);
+
     public abstract String toString();
 
 

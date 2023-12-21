@@ -14,7 +14,28 @@ class helpers {
     }
 
 
-        static Color normalColor = new Color(0, 0, 0);
+    static Color normalColor = new Color(0, 0, 0);
+
+
+    public static void higlightMoves(int x, int y, board b, displayBoard display) {
+        Color highlightColor = new Color(0, 255, 0);
+        int[][] moves = new int[64][2];
+        int count = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                moves[count][0] = i;
+                moves[count][1] = j;
+                count++;
+            }
+        }
+        for(int i = 0; i < 64; i++){
+            if (b.check_move(x, y, moves[i][0], moves[i][1])) {
+                highlight(moves[i][0], moves[i][1], highlightColor, display, b);
+            }
+        }
+    }
+
+
 
     public static void clicked(int x ,int y, board b, displayBoard display){
         Color clickedColor = new Color(130, 178, 255);
@@ -22,16 +43,20 @@ class helpers {
         if (firstClickX == -1 && firstClickY == -1) {
             
             normalColor = highlight(x, y, clickedColor, display, b);
+            // this line below is causing some pieces to return false when checked valid move
+            higlightMoves(x, y, b, display);
+            System.out.println("highlighted  posible moves " + x + " " + y + "" );
 
             firstClickX = x;
             firstClickY = y;
+            
 
 
         } else {
             // This is the second click, so we move
             System.out.println("moving from " + firstClickX + " " + firstClickY + " to " + x + " " + y + "");
             boolean moved = b.move(firstClickX, firstClickY, x, y);
- 
+            System.out.println("moved: " + moved);
         
     
             // Reset the first click coordinates

@@ -74,6 +74,12 @@ public class board {
         return false;
     }
 
+    public Boolean check_move(int x1, int y1, int x2, int y2) {
+        if (board[x1][y1].check_valid(x2, y2, board)) {
+            return true;
+        }
+        return false;
+    }
 
 
 }

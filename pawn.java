@@ -32,7 +32,9 @@ public class pawn extends piece {
             if (y == this.y && x == this.x + 1) {
                 move = true;
             }
+            System.out.println("this x: " + this.x + " this y: " + this.y + " x: " + x + " y: " + y + "");
             if (y == this.y && x == this.x + 2 && this.x == 1) {
+                
                 move = true;
             }
             if (y == this.y + 1 && x == this.x + 1 && board[x][y].getColor() == 1) {
@@ -64,6 +66,48 @@ public class pawn extends piece {
         }
         return move;
     }
+
+    public Boolean check_valid(int x, int y, piece[][] board){
+
+
+        Boolean move = false;
+        
+        if (x == this.x && y == this.y) {
+            move = false;
+        }
+        if (this.color == 0) {
+            if (y == this.y && x == this.x + 1) {
+                move = true;
+            }
+            System.out.println("this x: " + this.x + " this y: " + this.y + " x: " + x + " y: " + y + "");
+            if (y == this.y && x == this.x + 2 && this.x == 1) {
+                
+                move = true;
+            }
+            if (y == this.y + 1 && x == this.x + 1 && board[x][y].getColor() == 1) {
+                move = true;
+            }
+            if (y == this.y - 1 && x == this.x + 1 && board[x][y].getColor() == 1) {
+                move = true;
+            }
+        } else if (this.color == 1) {
+            if (y == this.y && x == this.x - 1) {
+                move = true;
+            }
+            if (y == this.y && x == this.x - 2 && this.x == 6) {
+                move = true;
+            }
+            if (y == this.y + 1 && x == this.x - 1 && board[x][y].getColor() == 0) {
+                move = true;
+            }
+            if (y == this.y - 1 && x == this.x - 1 && board[x][y].getColor() == 0) {
+                move = true;
+            }
+        }
+        return move;
+    }
+
+
 
     public String toString() {
         String result = "P ";
