@@ -90,6 +90,10 @@ public class knight extends piece {
             move = true;
         }
 
+        if(move){
+            this.x = x;
+            this.y = y;
+        }
         if (eat && move){
             eat(x,y,board);
         }

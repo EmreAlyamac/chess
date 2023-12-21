@@ -94,6 +94,10 @@ public class rook extends piece {
             }
         }
 
+        if (move){
+            this.x = x;
+            this.y = y;
+        }
         if(eat && move){
             eat(x,y,board);
         }

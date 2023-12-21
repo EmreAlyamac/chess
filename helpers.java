@@ -16,6 +16,8 @@ class helpers {
 
     static Color normalColor = new Color(0, 0, 0);
 
+    static int[][] posible_moves = new int[64][2];
+    static int count_2 = 0;
 
     public static void higlightMoves(int x, int y, board b, displayBoard display) {
         Color highlightColor = new Color(0, 255, 0);
@@ -31,8 +33,27 @@ class helpers {
         for(int i = 0; i < 64; i++){
             if (b.check_move(x, y, moves[i][0], moves[i][1])) {
                 highlight(moves[i][0], moves[i][1], highlightColor, display, b);
+                posible_moves[count_2][0] = moves[i][0];
+                posible_moves[count_2][1] = moves[i][1];
+                count_2++;
             }
         }
+    }
+
+    public static void unhighlightMoves(displayBoard display) {
+        for (int i = 0; i < count_2; i++) {
+            int decider = (posible_moves[i][0] + posible_moves[i][1]) % 2;
+            if (decider == 0) {
+                normalColor = new Color(87, 36, 3);
+            } else {
+                normalColor = new Color(255, 139, 64);
+            }
+            highlight(posible_moves[i][0], posible_moves[i][1], normalColor, display, null);
+            
+        }
+        count_2 = 0;
+        
+        
     }
 
 
@@ -63,6 +84,7 @@ class helpers {
             highlight(firstClickX, firstClickY, normalColor, display, b);
             firstClickX = -1;
             firstClickY = -1;
+            unhighlightMoves(display);
         }
     }
 }
