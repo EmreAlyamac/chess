@@ -89,6 +89,10 @@ class king extends piece{
         if (eat && move){
             eat(x,y,board);
         }
+        if(move){
+            this.x = x;
+            this.y = y;
+        }
         return move;
     }
 
