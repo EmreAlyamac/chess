@@ -32,50 +32,66 @@ public class bishop extends piece{
         if (board[x][y].getAlive() && board[x][y].getColor() != this.color) {
             eat = true;
         }
-        
-        if (x == this.x && y == this.y) {
-            move = false;
+        if (board[x][y].getAlive() && board[x][y].getColor() == this.color) {
+            return false;
         }
 
-        if (x > this.x && y > this.y) {
+        if (Math.abs(this.x - x) != Math.abs(this.y - y)) {
+            return false;
+        }
+        
+        if (x == this.x && y == this.y) {
+            return false;
+        }
+
+        if (x > this.x && y > this.y) { // down right
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y + i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
         }
-        if (x > this.x && y < this.y) {
+
+        if (x > this.x && y < this.y) { // down left
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y - i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
         }
-        if (x < this.x && y > this.y) {
+
+        if (x < this.x && y > this.y) { // up right
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y + i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
         }
-        if (x < this.x && y < this.y) {
+
+        if (x < this.x && y < this.y) { // up left
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y - i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
         }
+        if(move){
+            this.x = x;
+            this.y = y;
+        }
+
         if(eat && move){
             eat(x,y,board);
         }
+
         return move;
 
     }
@@ -83,14 +99,22 @@ public class bishop extends piece{
     public Boolean check_valid(int x, int y, piece[][] board) {
         Boolean move = false;
         if (x == this.x && y == this.y) {
-            move = false;
+            return false;
+        }
+        
+        if (board[x][y].getAlive() && board[x][y].getColor() == this.color) {
+            return false;
+        }
+
+        if (Math.abs(this.x - x) != Math.abs(this.y - y)) {
+            return false;
         }
 
         if (x > this.x && y > this.y) {
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y + i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
@@ -98,8 +122,8 @@ public class bishop extends piece{
         if (x > this.x && y < this.y) {
             for (int i = 1; i < x - this.x; i++) {
                 if (board[this.x + i][this.y - i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
@@ -107,8 +131,8 @@ public class bishop extends piece{
         if (x < this.x && y > this.y) {
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y + i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
@@ -116,8 +140,8 @@ public class bishop extends piece{
         if (x < this.x && y < this.y) {
             for (int i = 1; i < this.x - x; i++) {
                 if (board[this.x - i][this.y - i].getAlive()) {
-                    move = false;
-                    break;
+                    return false;
+                    
                 }
             }
             move = true;
