@@ -43,11 +43,12 @@ public class clock {
             layeredPane.add(minute, JLayeredPane.PALETTE_LAYER);
             layeredPane.add(second, JLayeredPane.POPUP_LAYER);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(new clock().getJLayeredPane());
         frame.pack();
         frame.setVisible(true);
     }
+    */
 }
