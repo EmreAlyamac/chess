@@ -9,6 +9,7 @@ public abstract class piece {
     int y;
     boolean alive;
     player owner;
+
     String type;
     String path;
 
@@ -27,6 +28,16 @@ public abstract class piece {
     }
 
     public void kill() {
+        if(this.type == "King"){
+            if (this.color == 0) {
+                System.out.println("Black has won the game!");
+            } else {
+                System.out.println("White has won the game!");
+            }
+            game.gameOver = true;
+            
+            System.exit(0);
+        }
         this.alive = false;
     }
 
@@ -54,6 +65,16 @@ public abstract class piece {
     public void eat(int x, int y, piece[][] board){
         if (board[x][y].getAlive() == false) {
             return;
+        }
+        if (board[x][y].getType() == "King") {
+            if (board[x][y].getColor() == 0) {
+                System.out.println("Black has won the game!");
+            } else {
+                System.out.println("White has won the game!");
+            }
+            game.gameOver = true;
+            displayBoard.end_game();
+            System.exit(0);
         }
         board[x][y].kill();
         String color = "";

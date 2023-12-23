@@ -20,6 +20,11 @@ public class knight extends piece {
     public Boolean check_valid(int x, int y, piece[][] board){
         Boolean move = false;
 
+        
+        if(board[x][y].getAlive() && board[x][y].getColor() == this.color){
+            return false;
+        }
+        
         if (x == this.x && y == this.y){
             move = false;
         }
@@ -61,6 +66,10 @@ public class knight extends piece {
             eat = true;
         }
         Boolean move = false;
+
+        if(board[x][y].getAlive() && board[x][y].getColor() == this.color){
+            return false;
+        }
 
         if (x == this.x && y == this.y){
             move = false;

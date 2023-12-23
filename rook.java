@@ -21,33 +21,47 @@ public class rook extends piece {
         Boolean move = false;
 
         
+        if(board[x][y].getAlive() && board[x][y].getColor() == this.color){
+            return false;
+        }
+        
         if (x == this.x && y == this.y){
-            move = false;
+            return false;
         }
 
-        if (x == this.x + 1 && y == this.y){
-            move = true;
+        if (x == this.x){
+            if (y > this.y){
+                for (int i = this.y + 1; i < y; i++){
+                    if (board[x][i].getAlive()){
+                        return false;
+                    }
+                }
+                return true;
+            } else if (y < this.y){
+                for (int i = this.y - 1; i > y; i--){
+                    if (board[x][i].getAlive()){
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
-        if (x == this.x - 1 && y == this.y){
-            move = true;
-        }
-        if (x == this.x && y == this.y + 1){
-            move = true;
-        }
-        if (x == this.x && y == this.y - 1){
-            move = true;
-        }
-        if (x == this.x + 1 && y == this.y + 1){
-            move = true;
-        }
-        if (x == this.x + 1 && y == this.y - 1){
-            move = true;
-        }
-        if (x == this.x - 1 && y == this.y + 1){
-            move = true;
-        }
-        if (x == this.x - 1 && y == this.y - 1){
-            move = true;
+        else if (y == this.y){
+            if (x > this.x){
+                for (int i = this.x + 1; i < x; i++){
+                    if (board[i][y].getAlive()){
+                        return false;
+                    }
+                }
+                return true;
+            } else if (x < this.x){
+                for (int i = this.x - 1; i > x; i--){
+                    if (board[i][y].getAlive()){
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
         return move;
     }
@@ -58,42 +72,54 @@ public class rook extends piece {
         if (board[x][y].getAlive() && board[x][y].getColor() != this.color) {
             eat = true;
         }
+        
+        if(board[x][y].getAlive() && board[x][y].getColor() == this.color){
+            return false;
+        }
         Boolean move = false;
         
-        if (x == this.x) {
-            if (y > this.y) {
-                for (int i = this.y + 1; i < y; i++) {
-                    if (board[x][i].getAlive()) {
-                        move = false;
-                    }
-                }
-                return true;
-            } else if (y < this.y) {
-                for (int i = this.y - 1; i > y; i--) {
-                    if (board[x][i].getAlive()) {
-                        move = false;
+        if(board[x][y].getAlive() && board[x][y].getColor() == this.color){
+            return false;
+        }
+        
+        if (x == this.x && y == this.y){
+            return false;
+        }
+
+        if (x == this.x){
+            if (y > this.y){
+                for (int i = this.y + 1; i < y; i++){
+                    if (board[x][i].getAlive()){
+                        return false;
                     }
                 }
                 move = true;
-            }
-        } else if (y == this.y) {
-            if (x > this.x) {
-                for (int i = this.x + 1; i < x; i++) {
-                    if (board[i][y].getAlive()) {
-                        move = false;
-                    }
-                }
-                return true;
-            } else if (x < this.x) {
-                for (int i = this.x - 1; i > x; i--) {
-                    if (board[i][y].getAlive()) {
-                        move = false;
+            } else if (y < this.y){
+                for (int i = this.y - 1; i > y; i--){
+                    if (board[x][i].getAlive()){
+                        return false;
                     }
                 }
                 move = true;
             }
         }
-
+        else if (y == this.y){
+            if (x > this.x){
+                for (int i = this.x + 1; i < x; i++){
+                    if (board[i][y].getAlive()){
+                        return false;
+                    }
+                }
+                return true;
+            } else if (x < this.x){
+                for (int i = this.x - 1; i > x; i--){
+                    if (board[i][y].getAlive()){
+                        return false;
+                    }
+                }
+                move = true;
+            }
+        }
         if (move){
             this.x = x;
             this.y = y;

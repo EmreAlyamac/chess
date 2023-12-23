@@ -1,7 +1,8 @@
 import java.awt.Color;
 
 class helpers {
-   
+    private static int turn = 0;
+
     private static int firstClickX = -1;
     private static int firstClickY = -1;
     
@@ -59,6 +60,10 @@ class helpers {
 
 
     public static void clicked(int x ,int y, board b, displayBoard display){
+        if (turn % 2 !=  b.getPiece(x, y).getColor() %2  && firstClickX == -1 && firstClickY == -1) {
+            return;
+        }
+
         Color clickedColor = new Color(130, 178, 255);
         System.out.println("clicked on " + x + " " + y + "");
         if (firstClickX == -1 && firstClickY == -1) {
@@ -85,6 +90,8 @@ class helpers {
             firstClickX = -1;
             firstClickY = -1;
             unhighlightMoves(display);
+            if(moved)
+                turn++;
         }
     }
 }

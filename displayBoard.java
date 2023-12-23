@@ -81,6 +81,11 @@ public class displayBoard extends JFrame {
             }
         return initialColor;
     }
+    public static void end_game()
+    {
+        System.out.println("Game Over");
+        System.exit(0);
+    }
     
 
 
